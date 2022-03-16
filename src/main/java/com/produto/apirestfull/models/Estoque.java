@@ -15,17 +15,17 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "TB_PRODUTO")
-public class Produto implements Serializable {
+@Table(name = "TB_ESTOQUE")
+public class Estoque implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private long id;
-	private String nome;
+	private String produto;
+	private String armazem;
 	private BigDecimal quantidade;
-	private BigDecimal valor;
-	private String descricao;
-
+	private BigDecimal valorUnitario;
+	
 }

@@ -1,4 +1,4 @@
-package com.produto.apirestfull.models;
+package com.produto.apirestfull.module.estoque.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

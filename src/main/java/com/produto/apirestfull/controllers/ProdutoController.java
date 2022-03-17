@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.produto.apirestfull.models.Produto;
+import com.produto.apirestfull.module.estoque.repository.TesteRepository;
 import com.produto.apirestfull.repository.ProdutoRepository;
 
 import io.swagger.annotations.Api;
@@ -27,7 +28,7 @@ public class ProdutoController {
 
 	@Autowired
 	ProdutoRepository repository;
-
+	
 	@ApiOperation(value = "Retorna uma lista de Produtos")
 	@GetMapping("/produtos")
 	public List<Produto> listaProdutos() {

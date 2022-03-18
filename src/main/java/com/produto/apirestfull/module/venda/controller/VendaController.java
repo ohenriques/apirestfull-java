@@ -1,5 +1,7 @@
-package com.produto.apirestfull.controllers;
+package com.produto.apirestfull.module.venda.controller;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.produto.apirestfull.models.Venda;
-import com.produto.apirestfull.repository.VendaRepository;
+import com.produto.apirestfull.module.venda.model.Venda;
+import com.produto.apirestfull.module.venda.repository.VendaRepository;
 
 import io.swagger.annotations.Api;
 
@@ -25,10 +27,13 @@ public class VendaController {
 
 	@Autowired
 	VendaRepository repo;
+	@Autowired(required = true)
+	ClasseTesteRestGet get;
 
 	@GetMapping("/vendas")
-	public List<Venda> listaVendas() {
-		return repo.findAll();
+	public Object listaVendas() throws IOException, InterruptedException {
+		return get.buscaDados();
+//		return repo.findAll();
 	}
 
 	@GetMapping("/venda/{id}")

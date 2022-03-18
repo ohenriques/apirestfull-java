@@ -1,4 +1,4 @@
-package com.produto.apirestfull.controllers;
+package com.produto.apirestfull.module.produto.controller;
 
 import java.util.List;
 
@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.produto.apirestfull.models.Produto;
-import com.produto.apirestfull.module.estoque.repository.TesteRepository;
-import com.produto.apirestfull.repository.ProdutoRepository;
+import com.produto.apirestfull.module.produto.model.Produto;
+import com.produto.apirestfull.module.produto.repository.ProdutoRepository;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

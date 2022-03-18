@@ -19,7 +19,16 @@ import lombok.Setter;
 public class Estoque implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	
 
+	public Estoque(String produto, String armazem, BigDecimal quantidade, BigDecimal valorUnitario) {
+		super();
+		this.produto = produto;
+		this.armazem = armazem;
+		this.quantidade = quantidade;
+		this.valorUnitario = valorUnitario;
+	}
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private long id;

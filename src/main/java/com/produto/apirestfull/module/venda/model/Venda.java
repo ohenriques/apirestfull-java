@@ -30,6 +30,5 @@ public class Venda implements Serializable{
 	private Integer quantidade;
 	private BigDecimal valor;
 	private Date dataVenda;
-	
-	
+		
 }

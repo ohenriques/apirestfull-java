@@ -1,7 +1,5 @@
 package com.produto.apirestfull.module.venda.controller;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.produto.apirestfull.module.estoque.controller.EstoqueController;
+import com.produto.apirestfull.module.estoque.model.Estoque;
+import com.produto.apirestfull.module.estoque.repository.EstoqueRepository;
 import com.produto.apirestfull.module.venda.model.Venda;
 import com.produto.apirestfull.module.venda.repository.VendaRepository;
 
@@ -28,12 +29,11 @@ public class VendaController {
 	@Autowired
 	VendaRepository repo;
 	@Autowired(required = true)
-	ClasseTesteRestGet get;
+	EstoqueRepository estoqueRepo;
 
 	@GetMapping("/vendas")
-	public Object listaVendas() throws IOException, InterruptedException {
-		return get.buscaDados();
-//		return repo.findAll();
+	public List<Venda> listaVendas() {
+		return repo.findAll();
 	}
 
 	@GetMapping("/venda/{id}")
@@ -44,7 +44,9 @@ public class VendaController {
 	@PostMapping("/venda")
 	public Venda realizaUmaVenda(@RequestBody Venda venda) {
 		venda.setDataVenda(new Date());
-		System.out.println(venda);
-		return repo.save(venda);
+//		estoqueRepo.atualizaEstoque(venda);
+		System.out.println(venda.);
+//		return repo.save(venda);
+		return null;
 	}
 }

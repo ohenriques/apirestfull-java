@@ -16,18 +16,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "TB_ESTOQUE")
-public class Estoque implements Serializable {
+public class EstoqueRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	
 
-	public Estoque preparaEstoque(String produto, String armazem, BigDecimal quantidade, BigDecimal valorUnitario) {
+	public EstoqueRequest(String produto, String armazem, BigDecimal quantidade, BigDecimal valorUnitario) {
+		super();
 		this.produto = produto;
 		this.armazem = armazem;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
-		return this;
 	}
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id

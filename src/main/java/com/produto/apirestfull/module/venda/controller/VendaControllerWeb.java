@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.produto.apirestfull.module.estoque.controller.EstoqueController;
+import com.produto.apirestfull.factory.ControllerFactory;
+import com.produto.apirestfull.factory.Factory;
+import com.produto.apirestfull.module.estoque.controller.EstoqueControllerWeb;
 import com.produto.apirestfull.module.estoque.model.Estoque;
 import com.produto.apirestfull.module.estoque.repository.EstoqueRepository;
 import com.produto.apirestfull.module.venda.model.Venda;
+import com.produto.apirestfull.module.venda.model.VendaRequest;
 import com.produto.apirestfull.module.venda.repository.VendaRepository;
 
 import io.swagger.annotations.Api;
@@ -24,29 +27,24 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping(value = "/carrinho")
 @Api(value = "API REST Produtos")
-public class VendaController {
+public class VendaControllerWeb {
 
 	@Autowired
-	VendaRepository repo;
-	@Autowired(required = true)
-	EstoqueRepository estoqueRepo;
+	Factory controller;
+	
 
 	@GetMapping("/vendas")
 	public List<Venda> listaVendas() {
-		return repo.findAll();
+		return controller.vendaControler().listaVendas();
 	}
 
 	@GetMapping("/venda/{id}")
 	public Venda listaUmaVenda(@PathVariable(value = "id") long id) {
-		return repo.findById(id);
+		return controller.vendaControler().listaUmaVenda(id);
 	}
 
 	@PostMapping("/venda")
-	public Venda realizaUmaVenda(@RequestBody Venda venda) {
-		venda.setDataVenda(new Date());
-//		estoqueRepo.atualizaEstoque(venda);
-		System.out.println(venda.);
-//		return repo.save(venda);
-		return null;
+	public Venda realizaUmaVenda(@RequestBody VendaRequest venda) {
+		return controller.vendaControler().realizaUmaVenda(venda);
 	}
 }

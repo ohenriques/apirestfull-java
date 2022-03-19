@@ -11,29 +11,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.produto.apirestfull.factory.ControllerFactory;
+import com.produto.apirestfull.factory.Factory;
 import com.produto.apirestfull.module.estoque.model.Estoque;
+import com.produto.apirestfull.module.estoque.model.EstoqueRequest;
 import com.produto.apirestfull.module.estoque.repository.EstoqueRepository;
 
 @CrossOrigin
 @RestController
 @RequestMapping(value ="/estoque")
-public class EstoqueController {
-
+public class EstoqueControllerWeb {
+	
 	@Autowired
-	EstoqueRepository repo;
+	Factory controller;
 	
 	@GetMapping("/listaEstoque")
 	public List<Estoque> listaOEstoque(){
-		return repo.findAll();
+		return controller.estoqueControler().listaOEstoque();
 	}
 	
 	@PostMapping("/insereEstoque")
-	public Estoque insereDadoNoEstoque(@RequestBody Estoque estoque) {
-		return repo.save(estoque);
+	public Estoque insereDadoNoEstoque(@RequestBody EstoqueRequest estoque) {
+		return controller.estoqueControler().insereDadoNoEstoque(estoque);
 	}
 	
 	@PatchMapping("/atualizarRegistro")
-	public Estoque atualizarRegistroEstoque(@RequestBody Estoque estoque) {
-		return repo.save(estoque);
+	public Estoque atualizarRegistroEstoque(@RequestBody EstoqueRequest estoque) {
+		return controller.estoqueControler().insereDadoNoEstoque(estoque);
 	}
 }

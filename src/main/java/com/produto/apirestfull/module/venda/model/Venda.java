@@ -21,6 +21,8 @@ public class Venda implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	
+	
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private long id;
@@ -30,5 +32,29 @@ public class Venda implements Serializable{
 	private Integer quantidade;
 	private BigDecimal valor;
 	private Date dataVenda;
+
+  
+
+	public Venda novaVenda(long id, Integer codigoProduto, String nomeProduto, Integer quantidade, BigDecimal valor,
+			Date dataVenda) {
+		
+		this.id = id;
+		this.codigoProduto = codigoProduto;
+		this.nomeProduto = nomeProduto;
+		this.quantidade = quantidade;
+		this.valor = valor;
+		this.dataVenda = dataVenda;
+		return this;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Venda [id=" + id + ", codigoProduto=" + codigoProduto + ", nomeProduto=" + nomeProduto + ", quantidade="
+				+ quantidade + ", valor=" + valor + ", dataVenda=" + dataVenda + "]";
+	}
+        
+        
 		
 }
